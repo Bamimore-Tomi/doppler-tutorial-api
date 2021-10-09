@@ -111,7 +111,7 @@ func ConnDb() *sql.DB {
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
 	schema := os.Getenv("DB_NAME")
-	db_string := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", username, password, host, port, schema)
+	db_string := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&reconnect=true", username, password, host, port, schema)
 	fmt.Println(db_string)
 	db, err := sql.Open("mysql", db_string)
 	if err != nil {
