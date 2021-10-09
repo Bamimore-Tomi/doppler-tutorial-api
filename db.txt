@@ -1,0 +1,13 @@
+CREATE TABLE `doppler`.`users` (
+  `pk` INT NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(255) NOT NULL,
+  `lastname` VARCHAR(255) NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(1024) NOT NULL,
+  PRIMARY KEY (`pk`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `doppler`.`todos` ( `pk` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `description` VARCHAR(1024) NOT NULL , `deadline` TIMESTAMP NOT NULL , PRIMARY KEY (`pk`)) ENGINE = InnoDB;
+ALTER TABLE `doppler`.`todos` ADD user_id INT NOT NULL;
+ALTER TABLE `doppler`.`todos` ADD FOREIGN KEY (user_id) REFERENCES users(pk);
